@@ -23,8 +23,14 @@ namespace Gui
         public Calculator Source { get; set; }
         public MainWindow()
         {
+            
             Source = new Calculator();
             InitializeComponent();
+        }
+
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ((TextBox)sender).SelectAll();
         }
     }
 }
