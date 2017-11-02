@@ -220,6 +220,7 @@ namespace Gui
         IEnumerable<int> GetBeautyDigits(int max)
         {
             var incrs = new int[] { 50, 100, 500, 1000 };
+            var last = 0;
             var current = 50;
             var incrIndex = 0;
             while (current <= max)
@@ -232,8 +233,11 @@ namespace Gui
                     if (Rang(preNext2) > Rang(preNext))
                         incrIndex++;
                 }
+                last = current;
                 current += incrs[incrIndex];
             }
+            if (last != max)
+                yield return max;
         }
 
         IEnumerable<Tuple<int,int>> GetAllBets(int max)
